@@ -1,12 +1,18 @@
 import { readdirSync } from 'node:fs';
 import type { RigConfig } from './config.js';
 import { lastBeat, type Beat } from './heartbeat.js';
+import type { ReadNight, RunStatus } from './digest/types.js';
+
+export type StatusNight = {
+  night: string;
+  counts: Record<RunStatus, number> | null;
+};
 
 export type Status = {
   adapter: string;
   installed: string;
   lastBeat: Beat | null;
-  nights: string[];
+  nights: StatusNight[];
 };
 
 // Nights on disk = runs/<YYYY-MM-DD>.jsonl, newest first.
@@ -22,11 +28,17 @@ export function nightsOnDisk(runsDir: string): string[] {
   }
 }
 
-export function readStatus(config: RigConfig): Status {
+export function readStatus(config: RigConfig, readNight: ReadNight): Status {
+  const nights = nightsOnDisk(config.runsDir).map((night) => {
+    // The file can disappear after readdir; preserve the listed night and its position.
+    const digest = readNight(config.runsDir, night);
+    return { night, counts: digest?.counts ?? null };
+  });
+
   return {
     adapter: config.adapter,
     installed: config.installed,
     lastBeat: lastBeat(),
-    nights: nightsOnDisk(config.runsDir),
+    nights,
   };
 }
