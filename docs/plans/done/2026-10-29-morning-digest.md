@@ -1,8 +1,9 @@
 ---
 plan: morning-digest
-status: ready
+status: done
 owner: rook
 opened: 2026-10-29
+closed: 2026-11-21
 ---
 
 # Morning digest
@@ -77,3 +78,15 @@ page again with `LANE_MARKER` unset (the banner reads "no marker set") and uploa
 link. Move this plan to `docs/plans/done/` with its issue list.
 
 Done when: the preview link no longer shows the lane marker.
+
+## Issues
+
+| # | Issue | Blocked by | Worker | Closed |
+| --- | --- | --- | --- | --- |
+| 1 | [Read the nightly run log](https://github.com/jihadnaji/rig-handover-s01e04/issues/1) | — | Codex · GPT-6.2 Astra · high | 2026-11-21 |
+| 2 | [Render the digest page](https://github.com/jihadnaji/rig-handover-s01e04/issues/2) | #1 | Codex · GPT-6 Luna · medium | 2026-11-21 |
+| 3 | [Return the digest as JSON](https://github.com/jihadnaji/rig-handover-s01e04/issues/3) | #1, #2 | Codex · GPT-6 Luna · medium | 2026-11-21 |
+| 4 | [Link nights from the status board](https://github.com/jihadnaji/rig-handover-s01e04/issues/4) | #1, #2 | Codex · GPT-6 Luna · medium | 2026-11-21 |
+| 5 | [Test the digest routes](https://github.com/jihadnaji/rig-handover-s01e04/issues/5) | #1, #2, #3 | Codex · GPT-6 Luna · medium | 2026-11-21 |
+| 6 | [Send the public HTML preview](https://github.com/jihadnaji/rig-handover-s01e04/issues/6) | #1–#5 | Codex · GPT-6.2 Sol · high | 2026-11-21 |
+| 7 | [Replace the preview and archive the plan](https://github.com/jihadnaji/rig-handover-s01e04/issues/7) | #6 | Codex · GPT-6.2 Sol · high | 2026-11-21 |
